@@ -61,20 +61,29 @@ Para actualizar un seminario, edita `seminarios.json` y sube el cambio. La pági
 
 ## Insertar en WordPress
 
-En la entrada o página, agrega un bloque HTML personalizado y pega:
+En la entrada o página, agrega un bloque **HTML personalizado** y pega:
 
 ```html
 <iframe
+  id="contador-seminario"
   src="https://hiramrr.github.io/contador-seminarios/"
-  width="100%"
-  height="450"
-  style="border:0; display:block;"
   title="Próximo seminario DCC"
-  loading="lazy">
+  width="100%"
+  height="420"
+  scrolling="no"
+  style="border:0; display:block; width:100%; overflow:hidden;">
 </iframe>
+<script>
+  window.addEventListener("message", function (e) {
+    var f = document.getElementById("contador-seminario");
+    if (f && e.source === f.contentWindow && e.data && e.data.tipo === "contador-seminario-altura") {
+      f.style.height = e.data.alto + "px";
+    }
+  });
+</script>
 ```
 
-Si ves cortada la tarjeta en pantallas angostas, aumenta `height` a 560.
+El fondo del contador es transparente y no tiene scroll, así que se integra con la página. El script ajusta la altura del iframe al contenido; si WordPress elimina el `<script>`, el iframe se queda en 420 px (súbelo a 520 si se corta en celular).
 
 ## Accesibilidad
 

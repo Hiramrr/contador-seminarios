@@ -1,11 +1,10 @@
+/* Colores institucionales de la Universidad Veracruzana */
 :root {
-  --azul: #214B7A;
-  --azul-oscuro: #18365A;
-  --verde: #008B5A;
-  --verde-claro: #E6F4EE;
-  --texto: #1F2937;
-  --texto-suave: #6B7280;
-  --fondo-unidad: #F3F6FA;
+  --azul-uv: #18529D;
+  --verde-uv: #28AD56;
+  --texto: #1D2430;
+  --texto-suave: #5B6472;
+  --linea: #D8DEE6;
 }
 
 * {
@@ -16,50 +15,77 @@
   display: none !important;
 }
 
+/* Sin fondo ni scroll: el iframe se ve como parte de la página */
+html,
 body {
   margin: 0;
-  padding: 20px 16px;
-  background: #FFFFFF;
+  overflow: hidden;
+  background: transparent;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  padding: 4px 2px 8px;
   color: var(--texto);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  line-height: 1.5;
+  font-family: "Gill Sans", "Gill Sans MT", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.45;
 }
 
 .tarjeta {
-  max-width: 560px;
-  margin: 0 auto;
-  text-align: center;
+  max-width: 720px;
+  border-top: 3px solid var(--azul-uv);
+  padding-top: 14px;
 }
 
 .etiqueta {
-  display: inline-block;
-  margin: 0 0 14px;
-  padding: 4px 12px;
-  border-radius: 999px;
-  background: var(--fondo-unidad);
-  color: var(--azul);
+  margin: 0 0 10px;
+  color: var(--azul-uv);
   font-size: 0.8125rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .etiqueta.en-curso {
-  background: var(--verde-claro);
-  color: var(--verde);
+  color: var(--verde-uv);
+}
+
+.etiqueta.en-curso::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--verde-uv);
+  vertical-align: 1px;
+  animation: pulso 1.6s ease-in-out infinite;
+}
+
+@keyframes pulso {
+  50% { opacity: 0.3; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .etiqueta.en-curso::before { animation: none; }
 }
 
 .titulo {
-  margin: 0 0 10px;
-  color: var(--azul-oscuro);
-  font-size: 1.75rem;
+  margin: 0 0 6px;
+  color: var(--azul-uv);
+  font-size: 1.625rem;
   font-weight: 700;
   line-height: 1.2;
   overflow-wrap: break-word;
 }
 
 .ponente {
-  margin: 0 0 24px;
-  color: var(--texto);
+  margin: 0 0 18px;
   font-size: 1.0625rem;
 }
 
@@ -69,52 +95,53 @@ body {
 }
 
 .estado {
-  margin: 24px 0;
+  margin: 8px 0 16px;
 }
 
 .datos {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 16px;
-  margin: 0 0 28px;
-  padding: 16px 0;
-  border-top: 1px solid #E3E8EF;
-  border-bottom: 1px solid #E3E8EF;
-  text-align: left;
+  gap: 10px 32px;
+  margin: 0 0 22px;
 }
 
 .datos dt {
   color: var(--texto-suave);
   font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
 .datos dd {
-  margin: 2px 0 0;
-  font-size: 1rem;
-  font-weight: 500;
+  margin: 1px 0 0;
+  font-size: 0.9375rem;
 }
 
+/* Cuenta regresiva: números grandes separados por líneas finas */
 .cuenta {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
+  border-top: 1px solid var(--linea);
+  border-bottom: 1px solid var(--linea);
 }
 
 .unidad {
-  padding: 16px 4px 12px;
-  border-radius: 12px;
-  background: var(--fondo-unidad);
+  padding: 12px 0 10px 14px;
+  border-left: 1px solid var(--linea);
+}
+
+.unidad:first-child {
+  padding-left: 0;
+  border-left: 0;
 }
 
 .numero {
   display: block;
-  color: var(--azul);
-  font-size: 2.25rem;
-  font-weight: 700;
-  line-height: 1.1;
+  color: var(--texto);
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1;
   font-variant-numeric: tabular-nums;
 }
 
@@ -123,39 +150,42 @@ body {
   margin-top: 6px;
   color: var(--texto-suave);
   font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
 .en-vivo {
   margin: 0;
-  padding: 18px;
-  border-radius: 12px;
-  background: var(--verde-claro);
-  color: var(--verde);
+  padding: 14px 0;
+  border-top: 1px solid var(--linea);
+  border-bottom: 1px solid var(--linea);
+  color: var(--verde-uv);
   font-size: 1.25rem;
   font-weight: 700;
 }
 
 .pie {
-  margin-top: 28px;
+  margin-top: 10px;
   color: var(--texto-suave);
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
 }
 
-@media (max-width: 380px) {
-  .cuenta {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+@media (min-width: 520px) {
+  .datos {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 400px) {
+  .titulo {
+    font-size: 1.375rem;
   }
 
   .numero {
-    font-size: 2rem;
+    font-size: 1.875rem;
   }
-}
 
-@media (min-width: 560px) {
-  .datos {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .unidad {
+    padding-left: 10px;
   }
 }

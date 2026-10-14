@@ -131,3 +131,14 @@ async function cargar() {
 cargar().then(actualizar);
 setInterval(actualizar, 1000);
 setInterval(cargar, RECARGA_MS);
+
+// Avisa la altura a la página que incrusta el iframe para que se ajuste sin scroll.
+function avisarAltura() {
+  const alto = Math.ceil(document.documentElement.getBoundingClientRect().height);
+  window.parent.postMessage({ tipo: "contador-seminario-altura", alto }, "*");
+}
+
+if (window.parent !== window) {
+  new ResizeObserver(avisarAltura).observe(document.body);
+  window.addEventListener("load", avisarAltura);
+}
