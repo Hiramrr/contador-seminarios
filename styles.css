@@ -1,0 +1,161 @@
+:root {
+  --azul: #214B7A;
+  --azul-oscuro: #18365A;
+  --verde: #008B5A;
+  --verde-claro: #E6F4EE;
+  --texto: #1F2937;
+  --texto-suave: #6B7280;
+  --fondo-unidad: #F3F6FA;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  padding: 20px 16px;
+  background: #FFFFFF;
+  color: var(--texto);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.5;
+}
+
+.tarjeta {
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.etiqueta {
+  display: inline-block;
+  margin: 0 0 14px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--fondo-unidad);
+  color: var(--azul);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.etiqueta.en-curso {
+  background: var(--verde-claro);
+  color: var(--verde);
+}
+
+.titulo {
+  margin: 0 0 10px;
+  color: var(--azul-oscuro);
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  overflow-wrap: break-word;
+}
+
+.ponente {
+  margin: 0 0 24px;
+  color: var(--texto);
+  font-size: 1.0625rem;
+}
+
+.texto-suave,
+.estado {
+  color: var(--texto-suave);
+}
+
+.estado {
+  margin: 24px 0;
+}
+
+.datos {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  margin: 0 0 28px;
+  padding: 16px 0;
+  border-top: 1px solid #E3E8EF;
+  border-bottom: 1px solid #E3E8EF;
+  text-align: left;
+}
+
+.datos dt {
+  color: var(--texto-suave);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.datos dd {
+  margin: 2px 0 0;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.cuenta {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.unidad {
+  padding: 16px 4px 12px;
+  border-radius: 12px;
+  background: var(--fondo-unidad);
+}
+
+.numero {
+  display: block;
+  color: var(--azul);
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.unidad-texto {
+  display: block;
+  margin-top: 6px;
+  color: var(--texto-suave);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.en-vivo {
+  margin: 0;
+  padding: 18px;
+  border-radius: 12px;
+  background: var(--verde-claro);
+  color: var(--verde);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.pie {
+  margin-top: 28px;
+  color: var(--texto-suave);
+  font-size: 0.8125rem;
+}
+
+@media (max-width: 380px) {
+  .cuenta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .numero {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 560px) {
+  .datos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Próximo seminario · Doctorado en Ciencias de la Computación UV</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="tarjeta">
+    <p class="etiqueta" id="etiqueta">Próximo seminario</p>
+
+    <p class="estado" id="cargando">Cargando…</p>
+
+    <div class="estado" id="vacio" hidden>
+      <h1 class="titulo">Por anunciar</h1>
+      <p class="texto-suave">Consulta más tarde la fecha del siguiente seminario.</p>
+    </div>
+
+    <div class="estado" id="error" hidden role="alert">
+      <h1 class="titulo">No se pudo cargar la información</h1>
+      <p class="texto-suave">Intenta recargar la página.</p>
+    </div>
+
+    <div id="evento" hidden>
+      <h1 class="titulo" id="titulo"></h1>
+      <p class="ponente" id="ponente"></p>
+
+      <dl class="datos">
+        <div>
+          <dt>Cuándo</dt>
+          <dd><time id="fecha"></time></dd>
+        </div>
+        <div id="detalle-lugar">
+          <dt>Dónde</dt>
+          <dd id="lugar"></dd>
+        </div>
+      </dl>
+
+      <p class="en-vivo" id="en-vivo" hidden>¡El seminario está comenzando!</p>
+
+      <div class="cuenta" id="cuenta" aria-label="Tiempo restante">
+        <div class="unidad">
+          <span class="numero" id="dias">00</span>
+          <span class="unidad-texto" id="label-dias">Días</span>
+        </div>
+        <div class="unidad">
+          <span class="numero" id="horas">00</span>
+          <span class="unidad-texto">Horas</span>
+        </div>
+        <div class="unidad">
+          <span class="numero" id="minutos">00</span>
+          <span class="unidad-texto">Minutos</span>
+        </div>
+        <div class="unidad">
+          <span class="numero" id="segundos">00</span>
+          <span class="unidad-texto">Segundos</span>
+        </div>
+      </div>
+    </div>
+
+    <footer class="pie">Hora de Veracruz, México</footer>
+  </main>
+  <noscript>
+    <p class="estado">Activa JavaScript para ver la cuenta regresiva.</p>
+  </noscript>
+</body>
+</html>
