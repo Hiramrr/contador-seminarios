@@ -69,7 +69,7 @@ En la entrada o página, agrega un bloque **HTML personalizado** y pega:
   src="https://hiramrr.github.io/contador-seminarios/"
   title="Próximo seminario DCC"
   width="100%"
-  height="420"
+  height="360"
   scrolling="no"
   style="border:0; display:block; width:100%; overflow:hidden;">
 </iframe>
@@ -83,7 +83,7 @@ En la entrada o página, agrega un bloque **HTML personalizado** y pega:
 </script>
 ```
 
-El fondo del contador es transparente y no tiene scroll, así que se integra con la página. El script ajusta la altura del iframe al contenido; si WordPress elimina el `<script>`, el iframe se queda en 420 px (súbelo a 520 si se corta en celular).
+El fondo del contador es transparente y no tiene scroll, así que se integra con la página. El script ajusta la altura del iframe al contenido; si WordPress elimina el `<script>`, el iframe se queda en 360 px (súbelo a 440 si se corta en celular).
 
 ## Accesibilidad
 

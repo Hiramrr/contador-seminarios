@@ -8,59 +8,47 @@
   <script src="script.js" defer></script>
 </head>
 <body>
-  <main class="tarjeta">
-    <p class="etiqueta" id="etiqueta">Próximo seminario</p>
+  <main>
+    <fieldset class="tarjeta">
+      <legend class="etiqueta" id="etiqueta">Próximo seminario</legend>
 
-    <p class="estado" id="cargando">Cargando…</p>
+      <p class="estado" id="cargando">cargando<span class="cursor" aria-hidden="true"></span></p>
 
-    <div class="estado" id="vacio" hidden>
-      <h1 class="titulo">Por anunciar</h1>
-      <p class="texto-suave">Consulta más tarde la fecha del siguiente seminario.</p>
-    </div>
+      <div class="estado" id="vacio" hidden>
+        <h1 class="titulo">Por anunciar</h1>
+        <p class="texto-suave">Consulta más tarde la fecha del siguiente seminario.</p>
+      </div>
 
-    <div class="estado" id="error" hidden role="alert">
-      <h1 class="titulo">No se pudo cargar la información</h1>
-      <p class="texto-suave">Intenta recargar la página.</p>
-    </div>
+      <div class="estado" id="error" hidden role="alert">
+        <h1 class="titulo">No se pudo cargar la información</h1>
+        <p class="texto-suave">Intenta recargar la página.</p>
+      </div>
 
-    <div id="evento" hidden>
-      <h1 class="titulo" id="titulo"></h1>
-      <p class="ponente" id="ponente"></p>
+      <div id="evento" hidden>
+        <h1 class="titulo" id="titulo"></h1>
+        <p class="ponente" id="ponente"></p>
 
-      <dl class="datos">
-        <div>
-          <dt>Cuándo</dt>
-          <dd><time id="fecha"></time></dd>
-        </div>
-        <div id="detalle-lugar">
-          <dt>Dónde</dt>
-          <dd id="lugar"></dd>
-        </div>
-      </dl>
+        <dl class="datos">
+          <div>
+            <dt>fecha</dt>
+            <dd><time id="fecha"></time></dd>
+          </div>
+          <div id="detalle-lugar">
+            <dt>lugar</dt>
+            <dd id="lugar"></dd>
+          </div>
+        </dl>
 
-      <p class="en-vivo" id="en-vivo" hidden>¡El seminario está comenzando!</p>
+        <p class="en-vivo" id="en-vivo" hidden>el seminario está comenzando<span class="cursor" aria-hidden="true"></span></p>
 
-      <div class="cuenta" id="cuenta" aria-label="Tiempo restante">
-        <div class="unidad">
-          <span class="numero" id="dias">00</span>
-          <span class="unidad-texto" id="label-dias">Días</span>
-        </div>
-        <div class="unidad">
-          <span class="numero" id="horas">00</span>
-          <span class="unidad-texto">Horas</span>
-        </div>
-        <div class="unidad">
-          <span class="numero" id="minutos">00</span>
-          <span class="unidad-texto">Minutos</span>
-        </div>
-        <div class="unidad">
-          <span class="numero" id="segundos">00</span>
-          <span class="unidad-texto">Segundos</span>
+        <div class="cuenta" id="cuenta" aria-label="Tiempo restante">
+          <span class="unidad"><span class="numero" id="dias">00</span><abbr title="días" id="label-dias">d</abbr></span>
+          <span class="unidad"><span class="numero" id="horas">00</span><abbr title="horas">h</abbr></span>
+          <span class="unidad"><span class="numero" id="minutos">00</span><abbr title="minutos">m</abbr></span>
+          <span class="unidad"><span class="numero" id="segundos">00</span><abbr title="segundos">s</abbr></span>
         </div>
       </div>
-    </div>
-
-    <footer class="pie">Hora de Veracruz, México</footer>
+    </fieldset>
   </main>
   <noscript>
     <p class="estado">Activa JavaScript para ver la cuenta regresiva.</p>

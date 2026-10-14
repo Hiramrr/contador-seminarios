@@ -3,8 +3,8 @@
   --azul-uv: #18529D;
   --verde-uv: #28AD56;
   --texto: #1D2430;
-  --texto-suave: #5B6472;
-  --linea: #D8DEE6;
+  --texto-suave: #6A7380;
+  --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, "Liberation Mono", monospace;
 }
 
 * {
@@ -30,63 +30,60 @@ body::-webkit-scrollbar {
 }
 
 body {
-  padding: 4px 2px 8px;
+  padding: 2px;
   color: var(--texto);
-  font-family: "Gill Sans", "Gill Sans MT", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  line-height: 1.45;
+  font-family: var(--mono);
+  font-size: 15px;
+  line-height: 1.5;
 }
 
+/* Marco de terminal con el título incrustado en el borde */
 .tarjeta {
   max-width: 720px;
-  border-top: 3px solid var(--azul-uv);
-  padding-top: 14px;
+  min-width: 0;
+  margin: 0;
+  padding: 10px 18px 18px;
+  border: 1px solid var(--azul-uv);
 }
 
 .etiqueta {
-  margin: 0 0 10px;
+  padding: 0 8px;
+  margin-left: -4px;
   color: var(--azul-uv);
   font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
+
+.etiqueta::before { content: "[ "; }
+.etiqueta::after { content: " ]"; }
 
 .etiqueta.en-curso {
   color: var(--verde-uv);
 }
 
 .etiqueta.en-curso::before {
-  content: "";
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  margin-right: 8px;
-  border-radius: 50%;
-  background: var(--verde-uv);
-  vertical-align: 1px;
-  animation: pulso 1.6s ease-in-out infinite;
-}
-
-@keyframes pulso {
-  50% { opacity: 0.3; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .etiqueta.en-curso::before { animation: none; }
+  content: "[ ● ";
 }
 
 .titulo {
-  margin: 0 0 6px;
+  margin: 4px 0 6px;
   color: var(--azul-uv);
-  font-size: 1.625rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.3;
   overflow-wrap: break-word;
 }
 
 .ponente {
-  margin: 0 0 18px;
-  font-size: 1.0625rem;
+  margin: 0 0 16px;
+}
+
+.ponente::before {
+  content: "> ";
+  color: var(--verde-uv);
+  font-weight: 700;
 }
 
 .texto-suave,
@@ -95,97 +92,97 @@ body {
 }
 
 .estado {
-  margin: 8px 0 16px;
+  margin: 4px 0;
 }
 
 .datos {
+  margin: 0 0 18px;
+}
+
+.datos div {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 10px 32px;
-  margin: 0 0 22px;
+  grid-template-columns: 7ch minmax(0, 1fr);
 }
 
 .datos dt {
   color: var(--texto-suave);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
 }
 
 .datos dd {
-  margin: 1px 0 0;
-  font-size: 0.9375rem;
+  margin: 0;
+  overflow-wrap: break-word;
 }
 
-/* Cuenta regresiva: números grandes separados por líneas finas */
+/* Cuenta regresiva estilo terminal: 00d 23h 08m 46s */
 .cuenta {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  border-top: 1px solid var(--linea);
-  border-bottom: 1px solid var(--linea);
-}
-
-.unidad {
-  padding: 12px 0 10px 14px;
-  border-left: 1px solid var(--linea);
-}
-
-.unidad:first-child {
-  padding-left: 0;
-  border-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--texto-suave);
 }
 
 .numero {
-  display: block;
   color: var(--texto);
-  font-size: 2.5rem;
-  font-weight: 600;
+  font-size: 2.25rem;
+  font-weight: 700;
   line-height: 1;
   font-variant-numeric: tabular-nums;
 }
 
-.unidad-texto {
-  display: block;
-  margin-top: 6px;
-  color: var(--texto-suave);
-  font-size: 0.75rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+.unidad abbr {
+  margin-left: 2px;
+  color: var(--verde-uv);
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-decoration: none;
 }
 
 .en-vivo {
   margin: 0;
-  padding: 14px 0;
-  border-top: 1px solid var(--linea);
-  border-bottom: 1px solid var(--linea);
+  padding-top: 14px;
+  border-top: 1px dashed var(--texto-suave);
   color: var(--verde-uv);
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 700;
 }
 
-.pie {
-  margin-top: 10px;
-  color: var(--texto-suave);
-  font-size: 0.75rem;
+.en-vivo::before {
+  content: "$ ";
 }
 
-@media (min-width: 520px) {
-  .datos {
-    grid-template-columns: auto minmax(0, 1fr);
-  }
+.cursor {
+  display: inline-block;
+  width: 0.6em;
+  height: 1.1em;
+  margin-left: 4px;
+  background: currentColor;
+  vertical-align: text-bottom;
+  animation: parpadeo 1s steps(1) infinite;
+}
+
+@keyframes parpadeo {
+  50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor { animation: none; }
 }
 
 @media (max-width: 400px) {
-  .titulo {
-    font-size: 1.375rem;
+  body {
+    font-size: 14px;
+  }
+
+  .tarjeta {
+    padding: 8px 12px 14px;
   }
 
   .numero {
-    font-size: 1.875rem;
+    font-size: 1.75rem;
   }
 
-  .unidad {
-    padding-left: 10px;
+  .cuenta {
+    gap: 4px 12px;
   }
 }

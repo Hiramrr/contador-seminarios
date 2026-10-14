@@ -52,6 +52,7 @@ function mostrar(estado) {
   $("vacio").hidden = estado !== "vacio";
   $("error").hidden = estado !== "error";
   $("evento").hidden = estado !== "evento";
+  avisarAltura();
 }
 
 function setEtiqueta(texto, enCurso) {
@@ -88,7 +89,6 @@ function pintarCuenta(diff) {
   $("horas").textContent = dosDigitos(horas);
   $("minutos").textContent = dosDigitos(minutos);
   $("segundos").textContent = dosDigitos(segundos);
-  $("label-dias").textContent = dias === 1 ? "Día" : "Días";
 }
 
 function actualizar() {
@@ -134,6 +134,7 @@ setInterval(cargar, RECARGA_MS);
 
 // Avisa la altura a la página que incrusta el iframe para que se ajuste sin scroll.
 function avisarAltura() {
+  if (window.parent === window) return;
   const alto = Math.ceil(document.documentElement.getBoundingClientRect().height);
   window.parent.postMessage({ tipo: "contador-seminario-altura", alto }, "*");
 }
