@@ -35,6 +35,7 @@ function preparar(datos) {
       titulo: String(s.titulo),
       ponente: String(s.ponente),
       lugar: s.lugar ? String(s.lugar) : "",
+      imagen: s.imagen ? String(s.imagen) : "",
       inicio: Date.parse(s.fecha)
     }))
     .sort((a, b) => a.inicio - b.inicio);
@@ -72,6 +73,19 @@ function pintarEvento(evento) {
   $("fecha").setAttribute("datetime", new Date(evento.inicio).toISOString());
   $("lugar").textContent = evento.lugar;
   $("detalle-lugar").hidden = !evento.lugar;
+
+  const conCartel = Boolean(evento.imagen);
+  $("cartel").hidden = !conCartel;
+  $("evento").classList.toggle("con-cartel", conCartel);
+  $("tarjeta").classList.toggle("con-cartel", conCartel);
+  if (conCartel) {
+    $("cartel-imagen").src = evento.imagen;
+    $("cartel-imagen").alt = "Cartel del seminario «" + evento.titulo + "» con " + evento.ponente;
+    $("cartel-enlace").href = evento.imagen;
+  } else {
+    $("cartel-imagen").removeAttribute("src");
+    $("cartel-enlace").removeAttribute("href");
+  }
 }
 
 function dosDigitos(n) {

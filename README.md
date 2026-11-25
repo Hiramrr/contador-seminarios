@@ -10,6 +10,7 @@ Tarjeta con la cuenta regresiva para el próximo seminario. Es un sitio estátic
 | `styles.css` | Diseño y adaptación a celular |
 | `script.js` | Cuenta regresiva y selección del próximo seminario |
 | `seminarios.json` | Lista de seminarios, editable |
+| `carteles/` | Carteles de los seminarios (opcional) |
 
 ## Modificar los seminarios
 
@@ -21,7 +22,8 @@ Edita `seminarios.json`. Es un arreglo; la página muestra sola el próximo semi
     "titulo": "Hacia una UX Accesible: Evaluando Software con la Comunidad Sorda",
     "ponente": "Andrés Eduardo Fuentes Cortázar",
     "fecha": "2026-10-15T13:00:00-06:00",
-    "lugar": "Audiovisual FEI UV, Facultad de Estadística e Informática"
+    "lugar": "Audiovisual FEI UV, Facultad de Estadística e Informática",
+    "imagen": "carteles/2026-10-15.jpg"
   }
 ]
 ```
@@ -29,6 +31,7 @@ Edita `seminarios.json`. Es un arreglo; la página muestra sola el próximo semi
 - `titulo` y `ponente`: obligatorios.
 - `fecha`: obligatoria, en formato `AAAA-MM-DDTHH:MM:SS-06:00`. Veracruz no usa horario de verano, así que el offset es `-06:00` todo el año.
 - `lugar`: opcional. Si lo dejas vacío, la línea no se muestra.
+- `imagen`: opcional. Ruta al cartel dentro de `carteles/`. Se muestra a la derecha cuando hay espacio (640 px o más) y abajo en celular; al tocarlo se abre en grande. Conviene subirlo como JPG de unos 1200 px para que cargue rápido.
 
 Para agregar un seminario, copia un bloque, cambia sus datos y pon una coma entre bloques. Valida el JSON en [jsonlint.com](https://jsonlint.com) antes de publicar: un error de sintaxis deja la tarjeta en modo de error.
 

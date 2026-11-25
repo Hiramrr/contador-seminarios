@@ -46,6 +46,15 @@ body {
   border: 1px solid var(--azul-uv);
 }
 
+/* Con cartel la tarjeta se ensancha para dejar el cartel a un lado */
+.tarjeta.con-cartel {
+  max-width: 1100px;
+}
+
+main {
+  container-type: inline-size;
+}
+
 .etiqueta {
   padding: 0 8px;
   margin-left: -4px;
@@ -136,6 +145,42 @@ body {
   font-size: 1.125rem;
   font-weight: 700;
   text-decoration: none;
+}
+
+/* Cartel: abajo en pantallas angostas, a la derecha en anchas */
+.cartel {
+  margin: 18px 0 0;
+}
+
+.cartel a {
+  display: block;
+  line-height: 0;
+  border: 1px solid var(--azul-uv);
+}
+
+.cartel a:focus-visible {
+  outline: 2px solid var(--verde-uv);
+  outline-offset: 2px;
+}
+
+.cartel img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+}
+
+@container (min-width: 640px) {
+  #evento.con-cartel {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(300px, 50%, 540px);
+    gap: 24px;
+    align-items: start;
+  }
+
+  #evento.con-cartel .cartel {
+    margin: 4px 0 0;
+  }
 }
 
 .en-vivo {
